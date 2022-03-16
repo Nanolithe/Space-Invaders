@@ -6,5 +6,6 @@ public class Enemy : MonoBehaviour
     {
         Destroy(collision.gameObject); // destroy bullet
         Debug.Log("Ouch!");
+        Destroy(gameObject);
     }
 }

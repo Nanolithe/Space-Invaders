@@ -29,7 +29,6 @@ public class Player : MonoBehaviour
         }
         
         float movementAxis = Input.GetAxis("Horizontal");
-        Transform transform = GetComponent<Transform>();
         transform.position += Vector3.right * movementAxis * movementPerSecond * Time.deltaTime;
 
         Vector3 force = Vector3.right * movementAxis * movementPerSecond * Time.deltaTime;

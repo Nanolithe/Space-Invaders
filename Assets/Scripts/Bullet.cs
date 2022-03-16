@@ -5,6 +5,8 @@
 public class Bullet : MonoBehaviour
 {
     public float speed = 5;
+    public Vector3 direction;
+    public System.Action destroyed;
 
     //-----------------------------------------------------------------------------
     void Start()
@@ -17,5 +19,20 @@ public class Bullet : MonoBehaviour
     {
         GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
         Debug.Log("Wwweeeeee");
+    }
+
+    private void Update()
+    {
+        this.transform.position += this.direction * this.speed * Time.deltaTime;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (this.destroyed != null)
+        {
+            this.destroyed.Invoke();
+        }
+        
+        Destroy(this.gameObject);
     }
 }
